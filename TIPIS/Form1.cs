@@ -14,8 +14,7 @@ namespace TIPIS
 {
     public partial class Form1 : Form
     {
-
-        public void PrintChart()
+        public void PrintChartOne()
         {
             chart1.Series.Clear();
 
@@ -76,6 +75,30 @@ namespace TIPIS
 
         }
 
+        public void PrintChartThree()
+        {
+            chart3.Series.Clear();
+
+            int n = (int)Task3N.Value;
+            int m = (int)Task3M.Value;
+            Series series = new Series()
+            {
+                Color = Color.BlueViolet,
+                BorderWidth = 2,
+                ChartType = SeriesChartType.FastLine,
+            };
+
+            var Task = new Lab1.Task3(n, m);
+            var result = Task.CalculateResult();
+
+            for (int i = 0; i < n;i++)
+            {
+                series.Points.Add(result[i]);
+            }
+
+            chart3.Series.Add(series);
+        }
+
         public Form1()
         {
             InitializeComponent();
@@ -83,12 +106,17 @@ namespace TIPIS
 
         private void CreateChart_Click(object sender, EventArgs e)
         {
-            PrintChart();
+            PrintChartOne();
         }
 
         private void PrintChart2_Click(object sender, EventArgs e)
         {
             PrintChartTwo();
+        }
+
+        private void Task3_Calculate_Click(object sender, EventArgs e)
+        {
+            PrintChartThree();
         }
     }
 }

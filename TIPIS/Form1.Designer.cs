@@ -50,11 +50,16 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.Task2_N = new System.Windows.Forms.NumericUpDown();
             this.PrintChart2 = new System.Windows.Forms.Button();
+            this.Task2_N = new System.Windows.Forms.NumericUpDown();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.Task3M = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Task3N = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Task3_Calculate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.N1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.M1)).BeginInit();
@@ -62,10 +67,12 @@
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Task2_N)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Task3M)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Task3N)).BeginInit();
             this.SuspendLayout();
             // 
             // chart1
@@ -257,34 +264,16 @@
             this.tabPage2.Text = "2 Задание";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // PrintChart2
             // 
-            this.tabPage3.Controls.Add(this.chart3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(816, 418);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "7 Задание";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // chart2
-            // 
-            this.chart2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(6, 6);
-            this.chart2.Name = "chart2";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(693, 406);
-            this.chart2.TabIndex = 0;
-            this.chart2.Text = "chart2";
+            this.PrintChart2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.PrintChart2.Location = new System.Drawing.Point(705, 389);
+            this.PrintChart2.Name = "PrintChart2";
+            this.PrintChart2.Size = new System.Drawing.Size(105, 23);
+            this.PrintChart2.TabIndex = 2;
+            this.PrintChart2.Text = "Построить";
+            this.PrintChart2.UseVisualStyleBackColor = true;
+            this.PrintChart2.Click += new System.EventHandler(this.PrintChart2_Click);
             // 
             // Task2_N
             // 
@@ -309,16 +298,39 @@
             0,
             0});
             // 
-            // PrintChart2
+            // chart2
             // 
-            this.PrintChart2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.PrintChart2.Location = new System.Drawing.Point(705, 389);
-            this.PrintChart2.Name = "PrintChart2";
-            this.PrintChart2.Size = new System.Drawing.Size(105, 23);
-            this.PrintChart2.TabIndex = 2;
-            this.PrintChart2.Text = "Построить";
-            this.PrintChart2.UseVisualStyleBackColor = true;
-            this.PrintChart2.Click += new System.EventHandler(this.PrintChart2_Click);
+            this.chart2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            chartArea2.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart2.Legends.Add(legend2);
+            this.chart2.Location = new System.Drawing.Point(6, 6);
+            this.chart2.Name = "chart2";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart2.Series.Add(series2);
+            this.chart2.Size = new System.Drawing.Size(693, 406);
+            this.chart2.TabIndex = 0;
+            this.chart2.Text = "chart2";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.Task3_Calculate);
+            this.tabPage3.Controls.Add(this.Task3N);
+            this.tabPage3.Controls.Add(this.label7);
+            this.tabPage3.Controls.Add(this.Task3M);
+            this.tabPage3.Controls.Add(this.label5);
+            this.tabPage3.Controls.Add(this.chart3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(816, 418);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "7 Задание";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // chart3
             // 
@@ -335,9 +347,81 @@
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             this.chart3.Series.Add(series3);
-            this.chart3.Size = new System.Drawing.Size(693, 406);
+            this.chart3.Size = new System.Drawing.Size(670, 406);
             this.chart3.TabIndex = 1;
             this.chart3.Text = "chart3";
+            // 
+            // Task3M
+            // 
+            this.Task3M.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Task3M.Location = new System.Drawing.Point(679, 23);
+            this.Task3M.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.Task3M.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.Task3M.Name = "Task3M";
+            this.Task3M.Size = new System.Drawing.Size(120, 20);
+            this.Task3M.TabIndex = 12;
+            this.Task3M.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(679, 7);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(115, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Чило экспериментов";
+            // 
+            // Task3N
+            // 
+            this.Task3N.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Task3N.Location = new System.Drawing.Point(682, 72);
+            this.Task3N.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.Task3N.Name = "Task3N";
+            this.Task3N.Size = new System.Drawing.Size(120, 20);
+            this.Task3N.TabIndex = 13;
+            this.Task3N.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(679, 57);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(89, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Число отрезков";
+            // 
+            // Task3_Calculate
+            // 
+            this.Task3_Calculate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Task3_Calculate.Location = new System.Drawing.Point(679, 390);
+            this.Task3_Calculate.Name = "Task3_Calculate";
+            this.Task3_Calculate.Size = new System.Drawing.Size(133, 23);
+            this.Task3_Calculate.TabIndex = 15;
+            this.Task3_Calculate.Text = "Построить";
+            this.Task3_Calculate.UseVisualStyleBackColor = true;
+            this.Task3_Calculate.Click += new System.EventHandler(this.Task3_Calculate_Click);
             // 
             // Form1
             // 
@@ -355,10 +439,13 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Task2_N)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Task3M)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Task3N)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -383,6 +470,11 @@
         private System.Windows.Forms.Button PrintChart2;
         private System.Windows.Forms.NumericUpDown Task2_N;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
+        private System.Windows.Forms.NumericUpDown Task3N;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.NumericUpDown Task3M;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button Task3_Calculate;
     }
 }
 

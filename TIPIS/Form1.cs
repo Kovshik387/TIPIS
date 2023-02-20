@@ -16,6 +16,7 @@ namespace TIPIS
     {
         public void PrintChartOne()
         {
+            chart1.Update();
             chart1.Series.Clear();
 
             Series seriesOne = new Series()
@@ -36,14 +37,10 @@ namespace TIPIS
             var labTwo = new Lab1.Task1(Convert.ToInt32(N1.Value), Convert.ToInt64(M2.Value));
 
             var arrayOne = labOne.CalculateTask1();
-
             var arrayTwo = labTwo.CalculateTask1();
 
-            for (int i = 0; i < labOne.N;i++)
-            {
-                seriesOne.Points.Add(new DataPoint(i, arrayOne[i]));
-                seriesTwo.Points.Add(new DataPoint(i, arrayTwo[i]));
-            }
+            foreach (var item in arrayOne) seriesOne.Points.Add(new DataPoint(item.Key, item.Value));
+            foreach (var item in arrayTwo) seriesTwo.Points.Add(new DataPoint(item.Key, item.Value));
 
             chart1.Series.Add(seriesOne);
             chart1.Series.Add(seriesTwo);
@@ -52,6 +49,7 @@ namespace TIPIS
 
         public void PrintChartTwo()
         {
+            chart3.Images.Clear();
             chart2.Series.Clear();
 
             int n = Convert.ToInt32(Task2_N.Value);
@@ -59,16 +57,19 @@ namespace TIPIS
             Series series = new Series()
             {
                 Color = Color.Aqua,
-                Name = "Моделирование дискретной\nслучайной величины",
+                //Name = "Моделирование дискретной\nслучайной величины",
                 BorderWidth = 2,
                 Tag = "X",
             };
 
             var Task = new Lab1.Task2(n);
 
-            for (int i = 0; i < n;i++)
+            var val = Task.CalculateResult().Values.ToList();
+            var key = Task.CalculateResult().Keys.ToList();
+
+            for (int i = 0; i < 7;i++)
             {
-                series.Points.Add(new DataPoint(i, Task.CalculateTask2()));
+                series.Points.Add(new DataPoint(key[i], val[i] )) ;
             }
 
             chart2.Series.Add(series);
@@ -77,6 +78,7 @@ namespace TIPIS
 
         public void PrintChartThree()
         {
+            chart3.Images.Clear();
             chart3.Series.Clear();
 
             int n = (int)Task3N.Value;
@@ -85,16 +87,13 @@ namespace TIPIS
             {
                 Color = Color.BlueViolet,
                 BorderWidth = 2,
-                ChartType = SeriesChartType.FastLine,
+                ChartType = SeriesChartType.Line,
             };
 
             var Task = new Lab1.Task3(n, m);
             var result = Task.CalculateResult();
 
-            for (int i = 0; i < n;i++)
-            {
-                series.Points.Add(result[i]);
-            }
+            foreach(var val in result) series.Points.Add(val.Value,val.Key);
 
             chart3.Series.Add(series);
         }
@@ -104,19 +103,12 @@ namespace TIPIS
             InitializeComponent();
         }
 
-        private void CreateChart_Click(object sender, EventArgs e)
-        {
-            PrintChartOne();
-        }
+        private void CreateChart_Click(object sender, EventArgs e) => PrintChartOne();
 
-        private void PrintChart2_Click(object sender, EventArgs e)
-        {
-            PrintChartTwo();
-        }
 
-        private void Task3_Calculate_Click(object sender, EventArgs e)
-        {
-            PrintChartThree();
-        }
+        private void PrintChart2_Click(object sender, EventArgs e) => PrintChartTwo();
+
+        private void Task3_Calculate_Click(object sender, EventArgs e) => PrintChartThree();
+
     }
 }

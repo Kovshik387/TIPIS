@@ -16,7 +16,7 @@ namespace TIPIS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Task2Form());
+            Application.Run(new Task3Form());
         }
     }
 }
